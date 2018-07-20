@@ -1,2 +1,2 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 

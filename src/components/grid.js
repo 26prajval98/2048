@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Box from './box'
+import { connect } from "react-redux";
 
 class Grid extends Component {
 
@@ -69,22 +70,32 @@ class Grid extends Component {
 	}
 
 	isGameOver() {
-		if(Math.min(...this.state.grid))
-		for (var i = 0; i < 16; i++) {
-			if(this.checkAdg(i, 4) && this.checkAdg(i, 1)){
-				this.setState({
-					gameOver : true
-				})
-				return
+		if (Math.min(...this.state.grid))
+			for (var i = 0; i < 16; i++) {
+				if (this.checkAdg(i, 4) && this.checkAdg(i, 1)) {
+					this.setState({
+						gameOver: true
+					})
+					return
+				}
 			}
-		}
 	}
 
-	merge(arr) {
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] === arr[i + 1]) {
-				arr[i] += arr[i + 1]
-				arr.splice(i + 1, 1)
+	merge(arr, dir) {
+		var i
+		if (dir)
+			for (i = 0; i < arr.length; i++) {
+				if (arr[i] === arr[i + 1]) {
+					arr[i] += arr[i + 1]
+					arr.splice(i + 1, 1)
+				}
+			}
+		else{
+			for (i = arr.length; i > 0; i--) {
+				if (arr[i] === arr[i - 1]) {
+					arr[i] += arr[i - 1]
+					arr.splice(i - 1, 1)
+				}
 			}
 		}
 
@@ -225,4 +236,4 @@ class Grid extends Component {
 	}
 }
 
-export default Grid;
+export default connect(null, {})(Grid)

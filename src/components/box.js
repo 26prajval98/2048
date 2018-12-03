@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Box extends React.Component{
+class Box extends React.Component {
     constructor(props) {
         super()
     }
@@ -10,7 +10,7 @@ class Box extends React.Component{
         var valStyle = this.props.box.valStyle
         var value = this.props.box.value
         var show = "w3-show"
-        if(value===0){
+        if (value === 0) {
             show = "w3-hide"
         }
         return (

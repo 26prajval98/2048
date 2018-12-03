@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Box from './box'
-import { connect } from "react-redux";
 
 class Grid extends Component {
 
@@ -76,6 +75,7 @@ class Grid extends Component {
 					this.setState({
 						gameOver: true
 					})
+					alert("Game Over")
 					return
 				}
 			}
@@ -112,7 +112,7 @@ class Grid extends Component {
 				}
 			}
 
-			this.merge(ups)
+			this.merge(ups, upOrDown)
 
 			if (upOrDown) {
 				for (j = ups.length; j < 4; j++) {
@@ -150,7 +150,7 @@ class Grid extends Component {
 				}
 			}
 
-			this.merge(ups)
+			this.merge(ups, leftOrRight)
 
 			if (leftOrRight) {
 				for (j = ups.length; j < 4; j++) {
@@ -236,4 +236,4 @@ class Grid extends Component {
 	}
 }
 
-export default connect(null, {})(Grid)
+export default Grid
